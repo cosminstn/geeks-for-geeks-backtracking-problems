@@ -85,12 +85,38 @@ def is_element_valid_in_position(board, row, col, new_el):
 
     return True
 
+
 def solve(board):
-    return solve(board, 0, 0)
+    solve(board, 0, 0)
+    return board
+
+
+def get_next_cell(row, col):
+    if row == 8 and col == 8:
+        return [None, None]
+    return [row + 1, 0] if col == 8 else [row, col + 1]
 
 def solve(board, row, col):
     if is_board_completed(board):
         return True
 
-
     for new_move in range(9):
+        if is_element_valid_in_position(board, row, col, new_move):
+            board[row][col] = new_move
+            # Check for next position
+            [next_row, next_col] = get_next_cell(row, col)
+
+    return True
+
+
+if __name__ == '__main__':
+    board = [[3, 0, 6, 5, 0, 8, 4, 0, 0],
+             [5, 2, 0, 0, 0, 0, 0, 0, 0],
+             [0, 8, 7, 0, 0, 0, 0, 3, 1],
+             [0, 0, 3, 0, 1, 0, 0, 8, 0],
+             [9, 0, 0, 8, 6, 3, 0, 0, 5],
+             [0, 5, 0, 0, 9, 0, 6, 0, 0],
+             [1, 3, 0, 0, 0, 0, 2, 5, 0],
+             [0, 0, 0, 0, 0, 0, 0, 7, 4],
+             [0, 0, 5, 2, 0, 6, 3, 0, 0]]
+    print(solve(board))
