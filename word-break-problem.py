@@ -17,10 +17,11 @@
 # i like icecream and mango
 
 
-dict = ["i", "like", "sam", "sung", "samsung", "mobile", "ice", "and", "cream", "icecream", "man", "go", "mango"]
 
 
-def solve_part(to_solve, solution, all_solutions):
+def solve_part(dict, to_solve, solution, all_solutions):
+    print(f"DEBUG: Called for to_solve: {to_solve} & current solution: {solution}")
+    # Base Cases
     if len(to_solve) == 0:
         all_solutions.append(solution)
         return True
@@ -28,21 +29,24 @@ def solve_part(to_solve, solution, all_solutions):
         solution.append(to_solve)
         all_solutions.append(solution)
         return True
-    print(f"DEBUG: Called for to_solve: {to_solve} & current solution: {solution}")
+
+    found_result = False
     for word in dict:
         if to_solve.startswith(word):
-            solution.append(word)
-            return solve_part(to_solve[len(word):], solution, all_solutions)
+            if solve_part(dict, to_solve[len(word):], solution + [word], all_solutions):
+                found_result = True
 
-    return False
+    return found_result
 
 
-def solve(to_solve):
+def solve(dict, to_solve):
     all_solutions = []
-    solve_part(to_solve, [], all_solutions)
+    solve_part(dict, to_solve, [], all_solutions)
     print('Final solution: ')
     return all_solutions
 
 
 if __name__ == '__main__':
-    print(solve("ilikesamsungmobile"))
+    dict1 = ["i", "like", "sam", "sung", "samsung", "mobile", "ice", "and", "cream", "icecream", "man", "go", "mango"]
+
+    print(solve(dict1, "ilikesamsungmobile"))
