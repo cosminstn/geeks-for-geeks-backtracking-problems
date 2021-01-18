@@ -1,7 +1,11 @@
+# Title: Work Break Problem
+# Difficulty level: MEDIUM
+# Link: https://www.geeksforgeeks.org/word-break-problem-using-backtracking/
+
 # Given a valid sentence without any spaces between the words and a dictionary of valid English words,
 # find all possible ways to break the sentence in individual dictionary words.
 
-# Example
+# Example:
 # Consider the following dictionary
 # { i, like, sam, sung, samsung, mobile, ice,
 # and, cream, icecream, man, go, mango}
