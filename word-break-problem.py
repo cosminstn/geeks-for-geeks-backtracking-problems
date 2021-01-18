@@ -17,16 +17,10 @@
 # i like icecream and mango
 
 
-
-
 def solve_part(dict, to_solve, solution, all_solutions):
     print(f"DEBUG: Called for to_solve: {to_solve} & current solution: {solution}")
     # Base Cases
     if len(to_solve) == 0:
-        all_solutions.append(solution)
-        return True
-    if to_solve in dict:
-        solution.append(to_solve)
         all_solutions.append(solution)
         return True
 
@@ -47,6 +41,7 @@ def solve(dict, to_solve):
 
 
 if __name__ == '__main__':
-    dict1 = ["i", "like", "sam", "sung", "samsung", "mobile", "ice", "and", "cream", "icecream", "man", "go", "mango"]
+    dictionary = ["i", "like", "sam", "sung", "samsung", "mobile", "ice", "and", "cream", "icecream", "man", "go", "mango"]
+    print(solve(dictionary, "ilikesamsungmobile"))
+    print(solve(dictionary, "ilikeicecreamandmango"))
 
-    print(solve(dict1, "ilikesamsungmobile"))
